@@ -15,7 +15,7 @@ router.get("/:id", async (req, res) => {
   try {
     const expense = await Expenses.findById(req.params.id);
     if (expense) {
-      res.status(200).json(expenses);
+      res.status(200).json(expense);
     } else {
       res
         .status(404)
