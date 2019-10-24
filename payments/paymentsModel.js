@@ -9,7 +9,9 @@ module.exports = {
 };
 
 function findBy(filter) {
-  return db("userExpensePayments").where(filter);
+  return db("userExpensePayments")
+    .where(filter)
+    .join("users", "userExpensePayments.user_id", "users.id");
 }
 
 function findById(id) {
