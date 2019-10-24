@@ -8,19 +8,14 @@ exports.up = function(knex, Promise) {
 
     tbl.string("password", 128).notNullable();
 
-    tbl.string("email", 128).notNullable();
+    tbl
+      .string("email", 128)
+      .notNullable()
+      .unique();
 
     tbl.string("img", 128);
 
     tbl.timestamps(true, true);
-
-    // tbl
-    //   .integer('balance', 128).notNullable()
-
-    // tbl
-    //   .integer('spent', 128).notNullable()
-
-    // avatar string that's a url
   });
 };
 

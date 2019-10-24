@@ -7,18 +7,23 @@ exports.up = function(knex, Promise) {
     tbl.integer("total_expense_price");
 
     // person creating expense
-    tbl.string("primary_paid", 128);
+    tbl
+      .integer("primary_paid")
+      .unsigned()
+      .references("id")
+      .inTable("users")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
 
     // bring in array of people who paid for the trip
 
     tbl
-    .integer("trip_id")
-    .unsigned()
-    .references("id")
-    .inTable("trips")
-    .onDelete("CASCADE")
-    .onUpdate("CASCADE");
-
+      .integer("trip_id")
+      .unsigned()
+      .references("id")
+      .inTable("trips")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
 
     tbl.timestamps(true, true);
   });

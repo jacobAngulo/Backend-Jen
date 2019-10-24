@@ -1,10 +1,9 @@
-
 exports.seed = function(knex, Promise) {
-
-  return knex('userTrips').truncate()
-    .then(function () {
+  return knex("userTrips")
+    .truncate()
+    .then(function() {
       // Inserts seed entries
-      return knex('userTrips').insert([
+      return knex("userTrips").insert([
         {
           users_id: 0,
           trips_id: 0
@@ -76,8 +75,7 @@ exports.seed = function(knex, Promise) {
         {
           users_id: 14,
           trips_id: 1
-        },
-
+        }
       ]);
     });
 };

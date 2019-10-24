@@ -19,10 +19,6 @@ router.get("/:id", async (req, res) => {
     const trip = await Trips.findById(req.params.id);
 
     if (trip) {
-      // brings in array of participants on trip
-      const participants = await db("userTrips").where({ trips_id: trip.id });
-      trip.participants = participants;
-
       res.status(200).json(trip);
     } else {
       res.status(404).json({ message: "Trip not found" });
@@ -72,25 +68,6 @@ router.post("/", async (req, res) => {
     const trip = await Trips.add(req.body);
     res.status(200).json(trip);
   } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
-});
-
-router.get("/complete", async (req, res) => {
-  try {
-    const tripComplete = await Trips.findById(req.params.complete);
-
-    if (tripComplete === true) {
-      // const participants = await db('userTrips').where({ trips_id: trip.id })
-      // trip.participants = participants;
-
-      res.status(200).json(tripComplete);
-    } else {
-      res.status(404).json({ message: "Trip is still active" });
-    }
-  } catch (error) {
-    // log error to database
     console.log(error);
     res.status(500).json(error);
   }

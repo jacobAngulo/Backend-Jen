@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
 
     tbl.boolean("complete");
 
-    tbl.string("img", 128)
+    tbl.string("img", 128);
 
     tbl
       .integer("user_id")

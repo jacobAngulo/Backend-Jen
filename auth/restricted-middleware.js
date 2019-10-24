@@ -1,19 +1,18 @@
-const jwt = require('jsonwebtoken');
-const secrets = require('./secrets');
+const jwt = require("jsonwebtoken");
+const secrets = require("./secrets");
 
 module.exports = (req, res, next) => {
-  
-  const token = req.headers.authorization
+  const token = req.headers.authorization;
   if (token) {
-      jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
-          if(err) {
-              return res.status(401).json({ message: "Please Login" })
-          } else {
-              req.decodedToken = decodedToken
-              next()
-          }
-      })
+    jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
+      if (err) {
+        return res.status(401).json({ message: "Please Login" });
+      } else {
+        req.decodedToken = decodedToken;
+        next();
+      }
+    });
   } else {
-      return res.status(401).json({ message: "Please Login" })
+    return res.status(401).json({ message: "Please Login" });
   }
-}
+};

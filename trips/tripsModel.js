@@ -33,10 +33,16 @@ async function add(trip) {
   return findById(id);
 }
 
-function findById(id) {
-  return db("trips")
+async function findById(id) {
+  const trip = await db("trips")
     .where({ id })
     .first();
+  const participants = await db("userTrips").where({ trips_id: trip.id });
+
+  return {
+    ...trip,
+    participants
+  };
 }
 
 function remove(id) {
