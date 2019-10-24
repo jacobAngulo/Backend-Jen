@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "cross": "^1.0.0",
+    "eslint": "^6.5.1",
     "jest": "^24.8.0",
     "knex-cleaner": "^1.1.4",
     "supertest": "^4.0.2"
@@ -26,7 +27,8 @@
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
-    "test": "cross-env DB_ENV=testing jest --watch --verbose"
+    "test": "cross-env DB_ENV=testing jest --watch --verbose",
+    "auto:lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",

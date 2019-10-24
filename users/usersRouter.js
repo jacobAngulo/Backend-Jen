@@ -8,11 +8,8 @@ router.get("/", async (req, res) => {
     const users = await Users.find();
     res.status(200).json(users);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        error: "Uh-oh! There was an error retrieving your list of users"
-      });
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 
@@ -29,9 +26,7 @@ router.get("/:id", async (req, res) => {
   } catch (error) {
     // log error to database
     console.log(error);
-    res.status(500).json({
-      message: "Error retrieving the person you're looking for"
-    });
+    res.status(500).json(error);
   }
 });
 
@@ -40,18 +35,15 @@ router.delete("/:id", async (req, res) => {
   try {
     const count = await Users.remove(req.params.id);
     if (count > 0) {
-      res
-        .status(200)
-        .json({
-          message: "The user has been removed from the trip...au revoir!"
-        });
+      res.status(200).json({
+        message: "The user has been removed from the trip...au revoir!"
+      });
     } else {
       res.status(404).json({ message: "Uh-oh! Action could not found." });
     }
   } catch (error) {
-    res.status(500).json({
-      message: "Unable to remove user. Can't get rid of them that easy!"
-    });
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 
@@ -61,9 +53,8 @@ router.post("/", async (req, res) => {
     const user = await Users.add(req.body);
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({
-      message: "Bummer. Error adding the user"
-    });
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 
@@ -79,7 +70,8 @@ router.put("/:id", async (req, res) => {
       res.status(404).json({ message: "Uh-oh! User could not be found" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Bummer. Error updating the user" });
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 
