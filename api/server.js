@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const morgan = require("morgan");
 
 const configureMiddleware = require("./middleware");
 const usersRouter = require("../users/usersRouter");
@@ -19,6 +20,7 @@ server.use("/expenses", expensesRouter);
 server.use("/payments", paymentsRouter);
 
 server.use(cors());
+server.use(morgan("dev"));
 server.use(express.json());
 
 server.get("/", (req, res) => {
