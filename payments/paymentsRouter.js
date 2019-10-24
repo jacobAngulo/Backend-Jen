@@ -14,7 +14,7 @@ router.get("/expense/:id", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const payment = await Payments.findById(req.params.id);
+    const payment = await Payments.findBy({ id: req.params.id });
 
     if (payment) {
       res.status(200).json(payment);
