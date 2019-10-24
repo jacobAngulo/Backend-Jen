@@ -7,32 +7,32 @@ exports.seed = function(knex, Promise) {
       return knex("userExpensePayments").insert([
         {
           users_id: 0,
-          expenses_id: 0,
+          expense_id: 0,
           amount_paid: 15
         },
         {
           users_id: 1,
-          expenses_id: 4,
+          expense_id: 4,
           amount_paid: 15
         },
         {
           users_id: 1,
-          expenses_id: 1,
+          expense_id: 1,
           amount_paid: 15
         },
         {
           users_id: 0,
-          expenses_id: 2,
+          expense_id: 2,
           amount_paid: 15
         },
         {
           users_id: 2,
-          expenses_id: 3,
+          expense_id: 3,
           amount_paid: 15
         },
         {
           users_id: 2,
-          expenses_id: 5,
+          expense_id: 5,
           amount_paid: 15
         }
       ]);
