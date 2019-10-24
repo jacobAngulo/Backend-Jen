@@ -55,5 +55,5 @@ function update(id, changes) {
   return db("trips")
     .where("id", id)
     .update(changes)
-    .then(count => (count > 0 ? this.get(id) : null));
+    .then(() => findById(id));
 }
