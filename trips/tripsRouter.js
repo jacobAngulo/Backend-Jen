@@ -7,6 +7,7 @@ const db = require("../data/dbConfig");
 router.get("/", async (req, res) => {
   try {
     const trips = await Trips.find();
+
     res.status(200).json(trips);
   } catch (error) {
     res.status(500).json(error);
